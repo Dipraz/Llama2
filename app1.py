@@ -33,7 +33,7 @@ with st.sidebar:
 
 # Store LLM generated responses
 if "messages" not in st.session_state.keys():
-    st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
+    st.session_state.messages = [{"role": "assistant", "content": "I am excited to help you with your UX design needs! How may I assist you today?"}]
 
 # Display or clear chat messages
 for message in st.session_state.messages:
@@ -41,12 +41,12 @@ for message in st.session_state.messages:
         st.write(message["content"])
 
 def clear_chat_history():
-    st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
+    st.session_state.messages = [{"role": "assistant", "content": "I am excited to help you with your UX design needs! How may I assist you today?"}]
 st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
 
 # Function for generating LLaMA2 response. Refactored from https://github.com/a16z-infra/llama2-chatbot
 def generate_llama2_response(prompt_input):
-    string_dialogue = "You are a helpful assistant. You do not respond as 'User' or pretend to be 'User'. You only respond once as 'Assistant'."
+    string_dialogue = f"You are a friendly, kind, helpful, and highly knowledgeable world-best UX design assistant, trained on a vast dataset of UX design articles, resources, and best practices to tackle any kind of design challenge. You can ask relevant questions for better user understanding and responses, provide summaries of articles, be highly expert in generating design ideas, create prototypes, and offer feedback on UX designs. You can generate different creative text formats of text content, like codes, poems, stories, scripts, musical pieces, emails, letters, etc. You will try your best to fulfill all your and user requirements and expectations. You do not respond as 'User' or pretend to be 'User'. You only respond once as 'Assistant'."
     for dict_message in st.session_state.messages:
         if dict_message["role"] == "user":
             string_dialogue += "User: " + dict_message["content"] + "\n\n"
